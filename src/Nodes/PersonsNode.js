@@ -9,7 +9,7 @@ function PersonsNode({ data }) {
           {data.emoji}
         </div>
         <div className="ml-2">
-          <div className="text-lg font-bold">{data.name}</div>
+          <div className=" ">{data.name}</div>
           <div className="text-gray-500">{data.job}</div>
         </div>
       </div>

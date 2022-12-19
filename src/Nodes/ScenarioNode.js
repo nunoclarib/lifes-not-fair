@@ -6,7 +6,8 @@ function ScenarioNode({ data }) {
     <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
       <div className="flex">
         <div className="">
-          <div className="text-lg text-gray-500">{data.name}</div>
+          <div className="text-lg text-lg font-bold">{data.name}</div>
+          <div className="text-lg text-gray-500">{data.job}</div>
         </div>
       </div>
 

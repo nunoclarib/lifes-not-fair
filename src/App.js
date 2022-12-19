@@ -40,14 +40,20 @@ const initialNodes = [
   },
   {
     id: '5',
-    data: { name: 'Scenario 1'},
+    data: { name: 'Scenario', job: 'Applying for a highly competitive internship at a prestigious company.'},
     position: { x: 500, y: 146 },
     type: 'scenarioNode',
   }
 ];
 
-//const initialEdges = [{ id: '1-2', source: '1', target: '2', label: 'to the', type: 'step' }];
-const initialEdges = []
+const initialEdges = [
+  { id: 'edge1', source: '5', target: '1'},
+  { id: 'edge2', source: '5', target: '2'},
+  { id: 'edge3', source: '5', target: '3'}, 
+  { id: 'edge4', source: '5', target: '4'} 
+]
+// const initialEdges = [{ id: 'edge1', source: '5', target: '1', label: 'to the', type: 'step' }];
+//const initialEdges = []
 
 function App() {
 
@@ -79,7 +85,7 @@ function App() {
   //   },
   // ]
 
-  // const edges = [{ id: '1-2', source: '1', target: '2' }];
+  // const edges = [{ id: '1-5', source: '1', target: '5' }];
 
   // const edges2 = [{ id: '1-2', source: '1', target: '2', label: 'to the', type: 'step' }];
 
