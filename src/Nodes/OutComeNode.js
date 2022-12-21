@@ -1,15 +1,17 @@
 import React, { memo } from 'react';
 import { Handle, Position } from 'reactflow';
 
-function ScenarioNode({ data }) {
-  const styles = {
+function OutcomeNode({ data }) {
+
+const styles = {
     connector: {
         height: "10px",
         width: "10px",
     }
 };
+
   return (
-    <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
+    <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400 w-96">
       <div className="flex">
         <div className="">
           <div className="text-lg text-lg font-bold">{data.name}</div>
@@ -17,10 +19,10 @@ function ScenarioNode({ data }) {
         </div>
       </div>
 
-      {/* <Handle type="target" position={Position.Top} className="w-16 !bg-teal-500" /> */}
-      <Handle type="source" position={Position.Bottom} className="w-16 !bg-teal-500" style={styles.connector} />
+      <Handle type="target" position={Position.Top} className="w-16 !bg-teal-500" style={styles.connector}/>
+      {/* <Handle type="source" position={Position.Bottom} className="w-16 !bg-teal-500" /> */}
     </div>
   );
 }
 
-export default memo(ScenarioNode);
+export default memo(OutcomeNode);

@@ -2,6 +2,13 @@ import React, { memo } from 'react';
 import { Handle, Position } from 'reactflow';
 
 function PersonsNode({ data }) {
+  const styles = {
+    connector: {
+        height: "10px",
+        width: "10px",
+    }
+};
+
   return (
     <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
       <div className="flex">
@@ -14,8 +21,8 @@ function PersonsNode({ data }) {
         </div>
       </div>
 
-      <Handle type="target" position={Position.Top} className="w-16 !bg-teal-500" />
-      <Handle type="source" position={Position.Bottom} className="w- !bg-teal-500" />
+      <Handle type="target" position={Position.Top} className="w-16 !bg-teal-500" style={styles.connector}/>
+      <Handle type="source" position={Position.Bottom} className="w- !bg-teal-500" style={styles.connector}/>
     </div>
   );
 }
