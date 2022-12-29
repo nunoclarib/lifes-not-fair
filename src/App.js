@@ -13,6 +13,8 @@ import ConfirmButtton from './buttons/ConfirmButtton';
 
 import { initialNodes, initialEdges } from './data/Data';
 
+import { AnimatePresence } from 'framer-motion';
+import InitPage from './init-page/InitPage';
 
 const nodeTypes = {
   personNode: PersonNode,
@@ -30,6 +32,7 @@ function App() {
 
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
+  const [modalPersonNode, setModalPersonNode] = useState(false);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -63,20 +66,21 @@ function App() {
   return (
     <div className="App">
       <div style={{ height: '100vh' }}>
+        <InitPage/>
         <ConfirmButtton/>
-      <ReactFlow 
-        nodes={nodes}
-        onNodesChange={onNodesChange}
-        edges={edges}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        nodeTypes={nodeTypes}
-        proOptions={proOptions}
-        fitView
-        >
-        <Background />
-        <Controls />
-      </ReactFlow>
+        <ReactFlow 
+          nodes={nodes}
+          onNodesChange={onNodesChange}
+          edges={edges}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          nodeTypes={nodeTypes}
+          proOptions={proOptions}
+          fitView
+          >
+          <Background />
+          <Controls />
+        </ReactFlow>
       </div>
     </div>
   );

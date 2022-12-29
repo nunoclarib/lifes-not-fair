@@ -11,7 +11,7 @@ const styles = {
 };
 
   return (
-    <div className="px-4 py-2 shadow-md rounded-md bg-white text-white inset-x-0 bg-teal-400">
+    <div className="px-4 py-2 shadow-md rounded-md text-white inset-x-0 bg-teal-400">
       <div className="flex">
         <div className="">
           <div className="text-lg text-lg font-bold">{data.name}</div>

@@ -42,3 +42,47 @@
   height: 15px;
 }
 
+.init-back{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(10px);
+  z-index: 999999999;
+}
+
+.title-game{
+
+  margin-top: 250px;
+
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 120px;
+  line-height: 140px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #5ED9C7;
+}
+
+.subtitle-game{
+  
+  font-family: 'Istok Web';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 43px;
+  text-align: center;
+  
+  color: rgba(48, 48, 48, 0.86);
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-color: rgba(94, 217, 199, 0.74);
+}
