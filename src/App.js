@@ -29,7 +29,6 @@ const nodeTypes = {
 const proOptions = { hideAttribution: true };
 
 function App() {
-
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
   const [modalPersonNode, setModalPersonNode] = useState(false);
