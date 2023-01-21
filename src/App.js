@@ -11,7 +11,7 @@ import OutComeNode from './nodes/OutComeNode';
 import CounterNode from './nodes/CounterNode';
 import ConfirmButtton from './buttons/ConfirmButtton';
 
-import { initialNodes, initialEdges } from './data/Data';
+import { initialNodes, initialEdges, correctEdges } from './data/Data';
 
 import { AnimatePresence } from 'framer-motion';
 import InitPage from './init-page/InitPage';
@@ -31,13 +31,18 @@ const proOptions = { hideAttribution: true };
 function App() {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
-  const [modalPersonNode, setModalPersonNode] = useState(false);
+  const [edgesConnect, setEdgesConnect] = useState('');
+  //const [modalPersonNode, setModalPersonNode] = useState(false);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
     []
   );
   const onEdgesChange = useCallback(
+    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    []
+  );
+  const onEdgesConnectChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
     []
   );
@@ -67,10 +72,11 @@ function App() {
       <div style={{ height: '100vh' }}>
         <InitPage/>
         <ConfirmButtton/>
-        <ReactFlow 
+        <ReactFlow
           nodes={nodes}
           onNodesChange={onNodesChange}
           edges={edges}
+          // edgesConnect={edgesConnect}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           nodeTypes={nodeTypes}

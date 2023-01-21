@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export const Backdrop = ({ children, onClick }) => {
   return (
     <motion.div
-      className='perfil__backdrop'
+      className='backdrop'
       onClick={onClick}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

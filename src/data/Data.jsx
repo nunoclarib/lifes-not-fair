@@ -70,4 +70,11 @@ const initialEdges = [
   { id: 'edge4', source: '5', target: '4'} 
 ]
 
-export { initialNodes, initialEdges };
+const correctEdges = [
+  { id: 'corret-edge1', source: '3', target: '9'},
+  { id: 'corret-edge2', source: '1', target: '8'},
+  { id: 'corret-edge3', source: '2', target: '7'}, 
+  { id: 'corret-edge4', source: '4', target: '6'} 
+]
+
+export { initialNodes, initialEdges, correctEdges };

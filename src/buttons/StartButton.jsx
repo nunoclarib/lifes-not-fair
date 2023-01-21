@@ -1,4 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
+import sound from '../audio/LifesNot-Fair.wav'
+import { Howler, Howl } from 'howler';
+import { useEffect } from 'react';
 
 // cursor-not-allowed
 
@@ -20,12 +23,54 @@ const styles = {
 };
 
 export default function StartButton(props) {
-
   const { setStartGame } = props;
 
+  //const [audio] = useState(new Audio('../audio/LifesNot-Fair.wav'));
+
+  const handleClick = () => {
+    setStartGame('hidden');
+    //SoundPlay(sound);
+  }
+
+  const SoundPlay = (src) => {
+    const sound = new Howl({
+      src
+    })
+    sound.stop()
+    sound.currentTime = 0;
+    sound.play()
+  }
+  const SoundStop = (src) => {
+    const sound = new Howl({
+      src
+    })
+    sound.currentTime = 0;
+    sound.stop()
+  }
+
   return (
-    <button style={styles.button} onClick={()=>setStartGame('hidden')}>
+    <button style={styles.button} onClick={handleClick}>
         Start Game
     </button>
   )
 }
+
+// import React, { useState, useEffect } from 'react';
+
+// function MyComponent() {
+//   const [audio] = useState(new Audio('path/to/audio.mp3'));
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       audio.currentTime = 0;
+//       audio.play();
+//     }, 1000); // 1000ms = 1s
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <div>
+//       {/* render something here */}
+//     </div>
+//   );
+// }

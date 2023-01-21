@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { Backdrop } from '../theatre/Backdrop';
+import { Backdrop } from './backdrop/Backdrop';
 
 const dropIn = {
   hidden: {
@@ -18,12 +18,12 @@ const dropIn = {
   },
 };
 
-const DeleteOppModal = ({ children, handleClose }) => {
+const PersonModal = ({ children, handleClose }) => {
   return (
     <Backdrop onClick={handleClose}>
         <motion.div
           onClick={e => e.stopPropagation()}
-          className=''
+          className='modal'
           variants={dropIn}
         >
           {children}
@@ -32,4 +32,4 @@ const DeleteOppModal = ({ children, handleClose }) => {
   );
 };
 
-export default memo(DeleteOppModal);
+export default memo(PersonModal);
