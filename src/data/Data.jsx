@@ -53,13 +53,6 @@ const initialNodes = [
     data: { name: 'Outcome D', job: 'They can face additional challenges due to language and cultural barriers, as well as biases related to their race and gender. However, the dedication to education and their hard work in their field may be an advantage over some of the other candidates.'},
     position: { x: 1400, y: 600  },
     type: 'outcomeNode',
-  },
-  {
-    id: '10',
-    data: { name: 'Wokeness Counter', job: '0/16'},
-    position: { y:10, x:10 },
-    type: 'counterNode',
-    draggable: false
   }
 ];
 

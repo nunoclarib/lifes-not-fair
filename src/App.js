@@ -15,6 +15,10 @@ import { initialNodes, initialEdges, correctEdges } from './data/Data';
 
 import { AnimatePresence } from 'framer-motion';
 import InitPage from './init-page/InitPage';
+import CounterButton from './buttons/CounterButton';
+import AudioPlayer from './audio/AudioPlayer';
+
+import audio from './audio/LifesNot-Fair.wav';
 
 const nodeTypes = {
   personNode: PersonNode,
@@ -72,6 +76,8 @@ function App() {
       <div style={{ height: '100vh' }}>
         <InitPage/>
         <ConfirmButtton/>
+        <CounterButton/>
+        <AudioPlayer src={audio}/>
         <ReactFlow
           nodes={nodes}
           onNodesChange={onNodesChange}
