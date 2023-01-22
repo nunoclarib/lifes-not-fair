@@ -20,6 +20,8 @@ import AudioPlayer from './audio/AudioPlayer';
 
 import audio from './audio/LifesNot-Fair.wav';
 
+import Sidebar from './modals/Sidebar';
+
 const nodeTypes = {
   personNode: PersonNode,
   scenarioNode: ScenarioNode,
@@ -37,6 +39,12 @@ function App() {
   const [edges, setEdges] = useState(initialEdges);
   const [edgesConnect, setEdgesConnect] = useState('');
   //const [modalPersonNode, setModalPersonNode] = useState(false);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -77,6 +85,10 @@ function App() {
         <InitPage/>
         <ConfirmButtton/>
         <CounterButton/>
+        <Sidebar style={{ height: '100vh' }} isOpen={isOpen} setIsOpen={setIsOpen} handleClick={handleClick}>
+          <h1>Sidebar Content</h1>
+          <p>This is where you can put additional content for your sidebar.</p>
+        </Sidebar>
         <AudioPlayer src={audio}/>
         <ReactFlow
           nodes={nodes}

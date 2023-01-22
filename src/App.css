@@ -85,6 +85,30 @@
   text-decoration-color: rgba(94, 217, 199, 0.74);
 }
 
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: -300px;/* Adjust as needed */
+  background-color: #fff;
+  overflow-y: auto;
+  z-index: 10000;
+  transition: transform 0.5s ease;
+  transform: translateX(100%);
+  border: 3px solid #5ED9C7;
+  border-radius: 5px 0 0 5px;
+}
+
+.show-sidebar {
+  transition: transform 0.5s ease;
+  transform: translateX(0);
+}
+
+.main-content {
+  padding: 15px;
+}
+
 /* .backdrop {
   position: fixed;
   top: 0;

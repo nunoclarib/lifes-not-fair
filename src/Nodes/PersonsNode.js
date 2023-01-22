@@ -10,6 +10,7 @@ function PersonsNode({ data, selected }) {
         width: "10px",
     }
 };
+
 const [isSelected, setIsSelected] = useState(selected);
 
 const handleClick = () => {

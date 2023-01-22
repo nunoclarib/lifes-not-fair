@@ -4,7 +4,6 @@ const initialNodes = [
     data: { name: 'Lily Bosco', job: 'Transgender woman', emoji: '👩🏼‍🦰' },
     position: { x:10, y:346  },
     type: 'personNode',
-    selected: true
   },
   {
     id: '2',
