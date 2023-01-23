@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import cross from '../icons/exit.png'
+import { useDispatch } from "react-redux";
+
 
 function Sidebar({ children, isOpen, handleClick}) {
 

@@ -28,7 +28,7 @@ function AudioPlayer({ src }) {
     setPlay(false);
   };
 
-  console.log(src);                                  
+  //console.log(src);                                  
 
   return (
     <div style={styles.position}>

@@ -1,6 +1,6 @@
 import './App.css';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, createContext } from 'react';
 
 import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge} from 'reactflow';
 import 'reactflow/dist/style.css';
@@ -22,6 +22,11 @@ import audio from './audio/LifesNot-Fair.wav';
 
 import Sidebar from './modals/Sidebar';
 
+//import {UserContext} from './context/context'
+import {useSelector, useDispatch} from "react-redux"
+import { select, unselect} from './redux/actions/index'
+
+
 const nodeTypes = {
   personNode: PersonNode,
   scenarioNode: ScenarioNode,
@@ -41,9 +46,24 @@ function App() {
   //const [modalPersonNode, setModalPersonNode] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  //const [selected, setSelected] = useState(false);
+
+  // const [isSelected, setIsSelected] = useState(false);
+  // console.log(isSelected);
+
+  const selected = useSelector((state) => state);
+  console.log(selected)
 
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    //setIsOpen(!isOpen);
+    if(isOpen === true){
+      dispatch(select(false))
+      setIsOpen(!isOpen)
+    }else {
+      dispatch(unselect(true))
+      setIsOpen(!isOpen)
+    }
   };
 
   const onNodesChange = useCallback(
@@ -85,11 +105,12 @@ function App() {
         <InitPage/>
         <ConfirmButtton/>
         <CounterButton/>
-        <Sidebar style={{ height: '100vh' }} isOpen={isOpen} setIsOpen={setIsOpen} handleClick={handleClick}>
+        <Sidebar style={{ height: '100vh' }} isOpen={selected} setIsOpen={setIsOpen} handleClick={handleClick}>
           <h1>Sidebar Content</h1>
           <p>This is where you can put additional content for your sidebar.</p>
         </Sidebar>
         <AudioPlayer src={audio}/>
+        {/* <UserContext.Provider value={{selection: [selected, setSelected]}}> */}
         <ReactFlow
           nodes={nodes}
           onNodesChange={onNodesChange}
@@ -104,6 +125,7 @@ function App() {
           <Background />
           <Controls />
         </ReactFlow>
+        {/* </UserContext.Provider> */}
       </div>
     </div>
   );
