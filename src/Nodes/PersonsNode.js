@@ -51,7 +51,7 @@ const handleClick = () => {
       <Handle type="source" position={Position.Bottom} className="w- !bg-teal-500" style={styles.connector}/>
     </div> */}
     {
-      isSelected ? (
+      isSelected && selected ? (
     <div className="px-4 py-2 shadow-md rounded-md bg-white border-4 border-teal-400"
     onClick={handleClick}
     >
