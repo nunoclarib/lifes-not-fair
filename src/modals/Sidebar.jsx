@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
-import cross from '../icons/exit.png'
+import React, { useState } from "react";
+import cross from "../icons/exit.png";
 import { useDispatch } from "react-redux";
+import { select, unselect } from "../redux/actions/index";
 
+function Sidebar({ children, selected }) {
+  const dispatch = useDispatch();
 
-function Sidebar({ children, isOpen, handleClick}) {
+  const handleClick = () => {
+    console.log("hey");
+    console.log(selected);
+    if (selected === true) {
+      dispatch(unselect(true));
+    } else {
+      dispatch(select(false));
+    }
+  };
 
   return (
     <div>
-      <button onClick={handleClick} style={{position:'absolute',zIndex:'10000'
-          }}>Open Sidebar</button>
-      
-        <div className={isOpen ? 'sidebar show-sidebar' : 'sidebar'}
-    >
-        {isOpen && (<div className='main-content'>
-          {/* <button className="close-button" onClick={handleClick}>
+      <div className={selected ? "sidebar show-sidebar" : "sidebar"}>
+        {selected && (
+          <div className="main-content">
+            {/* <button className="close-button" onClick={handleClick}>
             Close
           </button> */}
-          <img src={cross} className="close-button" onClick={handleClick} />
-          {children}
-          </div>)}
-        </div>
-      
+            <img src={cross} className="close-button" onClick={handleClick} />
+            {children}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

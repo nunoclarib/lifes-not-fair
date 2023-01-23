@@ -1,12 +1,12 @@
-export const select = (state) => {
+export const select = (nodeSelected) => {
     return{
         type: 'SELECT',
-        state
+        nodeSelected
     }
 }
-export const unselect = (state) => {
+export const unselect = (nodeSelected) => {
     return{
         type: 'UNSELECT',
-        state
+        nodeSelected
     }
 }

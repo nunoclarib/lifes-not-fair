@@ -1,10 +1,20 @@
 const selectReducer = (state, action) => {
     switch(action.type){
         case 'SELECT':
-            state = true
+            if(action.nodeSelected){
+                state = {
+                selected: true,
+                data: action.nodeSelected
+                }
+            }
             return state;
         case 'UNSELECT':
-            state = false
+            if(action.nodeSelected){
+                state = {
+                selected: false,
+                data: action.nodeSelected
+                }
+            }
             return state;
         default:
             return false;

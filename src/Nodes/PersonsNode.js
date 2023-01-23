@@ -20,15 +20,17 @@ function PersonsNode({ data }) {
 // console.log(selected);
 
 const dispatch = useDispatch();
-const selected = useSelector((state) => state);
+const selected = useSelector((state) => state.selected);
+const selectedData = useSelector((state) => state.data);
+console.log(selectedData?.name);
 const [isSelected, setIsSelected] = useState(false);
 
 const handleClick = () => {
     if(isSelected === false){
-      dispatch(select(true))
+      dispatch(select(data))
       setIsSelected(!isSelected)
     }else {
-      dispatch(unselect(false))
+      dispatch(unselect(data))
       setIsSelected(!isSelected)
     }
 }
@@ -51,7 +53,7 @@ const handleClick = () => {
       <Handle type="source" position={Position.Bottom} className="w- !bg-teal-500" style={styles.connector}/>
     </div> */}
     {
-      isSelected && selected ? (
+      (selectedData?.name === data.name) && selected ? (
     <div className="px-4 py-2 shadow-md rounded-md bg-white border-4 border-teal-400"
     onClick={handleClick}
     >

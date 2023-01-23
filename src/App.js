@@ -1,6 +1,6 @@
 import './App.css';
 
-import { useState, useCallback, createContext } from 'react';
+import { useState, useCallback, createContext, useMemo } from 'react';
 
 import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge} from 'reactflow';
 import 'reactflow/dist/style.css';
@@ -26,43 +26,41 @@ import Sidebar from './modals/Sidebar';
 import {useSelector, useDispatch} from "react-redux"
 import { select, unselect} from './redux/actions/index'
 
-
-const nodeTypes = {
-  personNode: PersonNode,
-  scenarioNode: ScenarioNode,
-  outcomeNode: OutComeNode,
-  counterNode: CounterNode,
-};
-
 // const initialEdges = [{ id: 'edge1', source: '5', target: '1', label: 'to the', type: 'step' }];
 // const initialEdges = []
 
 const proOptions = { hideAttribution: true };
 
 function App() {
+
+  const nodeTypes = useMemo(() => ({
+    personNode: (props) => <PersonNode {...props} />,
+    scenarioNode: ScenarioNode,
+    outcomeNode: OutComeNode,
+    counterNode: CounterNode,
+  }), []);
+
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
   const [edgesConnect, setEdgesConnect] = useState('');
   //const [modalPersonNode, setModalPersonNode] = useState(false);
 
-  const [isOpen, setIsOpen] = useState(false);
+  //const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   //const [selected, setSelected] = useState(false);
 
   // const [isSelected, setIsSelected] = useState(false);
   // console.log(isSelected);
 
-  const selected = useSelector((state) => state);
-  console.log(selected)
+  const selected = useSelector((state) => state.selected);
+  const selectedData = useSelector((state) => state.data);
+  console.log('SELECTED:',selected)
 
   const handleClick = () => {
-    //setIsOpen(!isOpen);
-    if(isOpen === true){
+    if(selected === true){
       dispatch(select(false))
-      setIsOpen(!isOpen)
     }else {
       dispatch(unselect(true))
-      setIsOpen(!isOpen)
     }
   };
 
@@ -105,9 +103,9 @@ function App() {
         <InitPage/>
         <ConfirmButtton/>
         <CounterButton/>
-        <Sidebar style={{ height: '100vh' }} isOpen={selected} setIsOpen={setIsOpen} handleClick={handleClick}>
-          <h1>Sidebar Content</h1>
-          <p>This is where you can put additional content for your sidebar.</p>
+        <Sidebar style={{ height: '100vh' }} selected={selected}>
+          <h1>{selectedData?.name}</h1>
+          <p>{selectedData?.name}</p>
         </Sidebar>
         <AudioPlayer src={audio}/>
         {/* <UserContext.Provider value={{selection: [selected, setSelected]}}> */}
