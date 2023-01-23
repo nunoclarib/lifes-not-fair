@@ -1,25 +1,25 @@
 const initialNodes = [
   {
     id: '1',
-    data: { name: 'Lily Bosco', job: 'Transgender woman', emoji: '👩🏼‍🦰' },
+    data: { name: 'Lily Bosco', job: 'Transgender woman', emoji: '👩🏼‍🦰', image:"lily.png" },
     position: { x:10, y:346  },
     type: 'personNode',
   },
   {
     id: '2',
-    data: { name: 'Marcus Wright', job: 'Black man', emoji: '👨🏾‍🦲' },
+    data: { name: 'Marcus Wright', job: 'Black man', emoji: '👨🏾‍🦲', image:"marcus.png" },
     position: { x: 489, y: 346 },
     type: 'personNode',
   },
   {
     id: '3',
-    data: { name: 'Mei Sawayama', job: 'Asian woman', emoji: '👩🏻' },
+    data: { name: 'Mei Sawayama', job: 'Asian woman', emoji: '👩🏻', image:"mei.png" },
     position: { x: 900, y: 346 },
     type: 'personNode',
   },
   {
     id: '4',
-    data: { name: 'David Cole', job: 'White man', emoji: '👱🏻‍♂️' },
+    data: { name: 'David Cole', job: 'White man', emoji: '👱🏻‍♂️', image:"david.png" },
     position: { x: 1400, y: 346 },
     type: 'personNode',
   },

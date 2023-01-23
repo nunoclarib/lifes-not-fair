@@ -25,6 +25,7 @@ import Sidebar from './modals/Sidebar';
 //import {UserContext} from './context/context'
 import {useSelector, useDispatch} from "react-redux"
 import { select, unselect} from './redux/actions/index'
+import SidebarContent from './modals/SidebarContent';
 
 // const initialEdges = [{ id: 'edge1', source: '5', target: '1', label: 'to the', type: 'step' }];
 // const initialEdges = []
@@ -104,8 +105,7 @@ function App() {
         <ConfirmButtton/>
         <CounterButton/>
         <Sidebar style={{ height: '100vh' }} selected={selected}>
-          <h1>{selectedData?.name}</h1>
-          <p>{selectedData?.name}</p>
+          <SidebarContent selectedData={selectedData}/>
         </Sidebar>
         <AudioPlayer src={audio}/>
         {/* <UserContext.Provider value={{selection: [selected, setSelected]}}> */}
