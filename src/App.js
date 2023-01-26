@@ -1,6 +1,6 @@
 import './App.css';
 
-import { useState, useCallback, createContext, useMemo } from 'react';
+import { useState, useCallback, createContext, useMemo, useEffect } from 'react';
 
 import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge} from 'reactflow';
 import 'reactflow/dist/style.css';
@@ -43,8 +43,17 @@ function App() {
 
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
+  const [buttonUnselected, setButtonUnselected] = useState(true);
   const [edgesConnect, setEdgesConnect] = useState('');
   //const [modalPersonNode, setModalPersonNode] = useState(false);
+
+  useEffect(() => {
+    if (edges?.length >= 8){
+      setButtonUnselected(false);
+    }
+  }, [edges]);
+
+  console.log(buttonUnselected)
 
   //const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
@@ -65,12 +74,14 @@ function App() {
     }
   };
 
+  console.log(edges);
+
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
     []
   );
   const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    (changes) => {setEdges((eds) => applyEdgeChanges(changes, eds))},
     []
   );
   const onEdgesConnectChange = useCallback(
@@ -102,7 +113,7 @@ function App() {
     <div className="App">
       <div style={{ height: '100vh' }}>
         <InitPage/>
-        <ConfirmButtton/>
+        <ConfirmButtton buttonUnselected={buttonUnselected}/>
         <CounterButton/>
         <Sidebar style={{ height: '100vh' }} selected={selected}>
           <SidebarContent selectedData={selectedData}/>
