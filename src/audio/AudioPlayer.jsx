@@ -11,7 +11,7 @@ function AudioPlayer({ src }) {
     position: {
         position: "absolute",
         top: "1rem",
-        zIndex: "1000",
+        zIndex: "100000000",
         right: "20px",
         heigh: "40px",
         width: "40px"

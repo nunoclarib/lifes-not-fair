@@ -105,6 +105,16 @@
   transform: translateX(0);
 }
 
+.timer{
+  background-color: #5ED9C7;
+  color: #282c34;
+  width: fit-content;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 15px;
+  font-size: 1.5rem;
+}
+
 .main-content {
   padding: 15px;
 }

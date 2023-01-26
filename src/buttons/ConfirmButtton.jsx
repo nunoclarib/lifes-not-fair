@@ -11,7 +11,7 @@ const styles = {
   },
 };
 
-export default function ConfirmButtton({ buttonUnselected }) {
+export default function ConfirmButtton({ buttonUnselected, handleConfirm }) {
   return (
     <>
       {buttonUnselected ? (
@@ -25,6 +25,7 @@ export default function ConfirmButtton({ buttonUnselected }) {
         <button
           className="bg-blue-500 text-white font-bold py-2 px-4 rounded h-14 bg-teal-400"
           style={styles.position}
+          onClick={handleConfirm}
         >
           Confirm Your Wokeness 😌
         </button>

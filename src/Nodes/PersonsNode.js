@@ -63,7 +63,7 @@ const handleClick = () => {
       </div>
       <div className="ml-2">
         <div className=" ">{data.name}</div>
-        <div className="text-gray-500">{data.job}</div>
+        {/* <div className="text-gray-500">{data.job}</div> */}
       </div>
     </div>
 

@@ -9,10 +9,8 @@ const styles = {
     }
 };
 
-export default function InitPage() {
+export default function InitPage({startGame, setStartGame}) {
 
-
-  const [startGame, setStartGame] = useState(null);
   //console.log(startGame);
 
   return (

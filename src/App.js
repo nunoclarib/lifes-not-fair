@@ -26,6 +26,7 @@ import Sidebar from './modals/Sidebar';
 import {useSelector, useDispatch} from "react-redux"
 import { select, unselect} from './redux/actions/index'
 import SidebarContent from './modals/SidebarContent';
+import Timer from './timer/Timer';
 
 // const initialEdges = [{ id: 'edge1', source: '5', target: '1', label: 'to the', type: 'step' }];
 // const initialEdges = []
@@ -45,6 +46,8 @@ function App() {
   const [edges, setEdges] = useState(initialEdges);
   const [buttonUnselected, setButtonUnselected] = useState(true);
   const [edgesConnect, setEdgesConnect] = useState('');
+  const [counter, setCounter] = useState(0);
+  const [startGame, setStartGame] = useState(null);
   //const [modalPersonNode, setModalPersonNode] = useState(false);
 
   useEffect(() => {
@@ -71,6 +74,34 @@ function App() {
       dispatch(select(false))
     }else {
       dispatch(unselect(true))
+    }
+  };
+
+  const handleConfirm = () => {
+    console.log('here');
+    edges.forEach(edge => {
+      if (edge.source == 1 && edge.target == 8 ){
+        setCounter(counter+1);
+        console.log('here 2');
+      }
+      else if (edge.source == 4 && edge.target == 6 ){
+        setCounter(counter+1);
+      }
+      else if (edge.source == 2 && edge.target == 7 ){
+        setCounter(counter+1);
+      }
+      else if (edge.source == 3 && edge.target == 9 ){
+        setCounter(counter+1);
+      }
+    });
+    if(0<counter <=2){
+      console.log('modal triste stay more woke!')
+    }
+    else if(counter == 3){
+      console.log('you almost got the fullest state of wokeness! you will get there')
+    }
+    else if(counter == 4){
+      console.log('yas woke queen, you slayed that')
     }
   };
 
@@ -112,9 +143,10 @@ function App() {
   return (
     <div className="App">
       <div style={{ height: '100vh' }}>
-        <InitPage/>
-        <ConfirmButtton buttonUnselected={buttonUnselected}/>
-        <CounterButton/>
+        <InitPage startGame={startGame} setStartGame={setStartGame}/>
+        {startGame === 'hidden' && <Timer/>}
+        <ConfirmButtton buttonUnselected={buttonUnselected} handleConfirm={handleConfirm}/>
+        <CounterButton counter={counter}/>
         <Sidebar style={{ height: '100vh' }} selected={selected}>
           <SidebarContent selectedData={selectedData}/>
         </Sidebar>

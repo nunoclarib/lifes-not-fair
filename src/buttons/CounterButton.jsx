@@ -9,11 +9,11 @@ const styles = {
     }
 };
 
-export default function CounterButton() {
+export default function CounterButton({counter}) {
   return (
     <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded bg-teal-400 opacity-100" style={styles.position}>
           <div>Wokeness Counter ⏰</div>
-          <div className='text-black'>0/16</div>
+          <div className='text-black'>{counter}/4</div>
     </button>
   )
 }
