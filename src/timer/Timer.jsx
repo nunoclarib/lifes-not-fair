@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function Timer() {
-  const [timeLeft, setTimeLeft] = useState(2 * 60);
+export default function Timer({timeLeft, setTimeLeft}) {
 
   const styles = {
     position: {
@@ -20,7 +19,8 @@ export default function Timer() {
     const intervalId = setInterval(() => {
       setTimeLeft(timeLeft => {
         if (timeLeft === 0) {
-          clearInterval(intervalId);
+          // commented this so counter is always up when restart
+          //clearInterval(intervalId);
           // You can do something when timeLeft is 0
         } else {
           return timeLeft - 1;

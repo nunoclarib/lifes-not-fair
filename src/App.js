@@ -2,7 +2,7 @@ import './App.css';
 
 import { useState, useCallback, createContext, useMemo, useEffect } from 'react';
 
-import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge} from 'reactflow';
+import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge, useViewport} from 'reactflow';
 import 'reactflow/dist/style.css';
 
 import PersonNode from './nodes/PersonsNode';
@@ -27,6 +27,7 @@ import {useSelector, useDispatch} from "react-redux"
 import { select, unselect} from './redux/actions/index'
 import SidebarContent from './modals/SidebarContent';
 import Timer from './timer/Timer';
+import TimesUpModal from './modals/TimesUpModal';
 
 // const initialEdges = [{ id: 'edge1', source: '5', target: '1', label: 'to the', type: 'step' }];
 // const initialEdges = []
@@ -48,15 +49,20 @@ function App() {
   const [edgesConnect, setEdgesConnect] = useState('');
   const [counter, setCounter] = useState(0);
   const [startGame, setStartGame] = useState(null);
-  //const [modalPersonNode, setModalPersonNode] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(2 * 10);
+  const [modalTimesUp, setModalTimesUp] = useState(false);
 
   useEffect(() => {
     if (edges?.length >= 8){
       setButtonUnselected(false);
     }
-  }, [edges]);
+    if(timeLeft<=0){
+      setModalTimesUp(true);
+    }
 
-  console.log(buttonUnselected)
+  }, [edges, timeLeft]);
+
+
 
   //const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
@@ -122,6 +128,9 @@ function App() {
 
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
+ 
+
+  
   // const nodes = [
   //   {
   //     id: '1',
@@ -142,9 +151,18 @@ function App() {
 
   return (
     <div className="App">
+      <AnimatePresence
+        initial={false}
+        exitBeforeEnter={true}
+        onExitComplete={() => null}
+      >
+        {modalTimesUp && (
+          <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter}/>
+        )}
+      </AnimatePresence>
       <div style={{ height: '100vh' }}>
         <InitPage startGame={startGame} setStartGame={setStartGame}/>
-        {startGame === 'hidden' && <Timer/>}
+        {startGame === 'hidden' && <Timer timeLeft={timeLeft} setTimeLeft={setTimeLeft}/>}
         <ConfirmButtton buttonUnselected={buttonUnselected} handleConfirm={handleConfirm}/>
         <CounterButton counter={counter}/>
         <Sidebar style={{ height: '100vh' }} selected={selected}>

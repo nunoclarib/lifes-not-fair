@@ -11,8 +11,8 @@ const styles = {
 
 export default function CounterButton({counter}) {
   return (
-    <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded bg-teal-400 opacity-100" style={styles.position}>
-          <div>Wokeness Counter ⏰</div>
+    <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded border-solid border-2 border-teal-400 bg-white opacity-100" style={styles.position}>
+          <div className='text-teal-400'>Wokeness Counter ⏰</div>
           <div className='text-black'>{counter}/4</div>
     </button>
   )

@@ -57,7 +57,7 @@ const handleClick = () => {
     <div className="px-4 py-2 shadow-md rounded-md bg-white border-4 border-teal-400"
     onClick={handleClick}
     >
-    <div className="flex">
+    <div className="flex items-center">
       <div className="rounded-full w-12 h-12 flex justify-center items-center bg-gray-100">
         {data.emoji}
       </div>
@@ -75,13 +75,13 @@ const handleClick = () => {
   <div className="px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400"
   onClick={handleClick}
   >
-  <div className="flex">
+  <div className="flex items-center">
     <div className="rounded-full w-12 h-12 flex justify-center items-center bg-gray-100">
       {data.emoji}
     </div>
     <div className="ml-2">
       <div className=" ">{data.name}</div>
-      <div className="text-gray-500">{data.job}</div>
+      {/* <div className="text-gray-500">{data.job}</div> */}
     </div>
   </div>
 
