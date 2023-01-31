@@ -28,6 +28,7 @@ import { select, unselect} from './redux/actions/index'
 import SidebarContent from './modals/SidebarContent';
 import Timer from './timer/Timer';
 import TimesUpModal from './modals/TimesUpModal';
+import ConfWokeModal from './modals/ConfWokeModal';
 
 // const initialEdges = [{ id: 'edge1', source: '5', target: '1', label: 'to the', type: 'step' }];
 // const initialEdges = []
@@ -51,6 +52,7 @@ function App() {
   const [startGame, setStartGame] = useState(null);
   const [timeLeft, setTimeLeft] = useState(2 * 10);
   const [modalTimesUp, setModalTimesUp] = useState(false);
+  const [modalConfirm, setModalConfirm] = useState(false);
   const [wrongNodes, setWrongNodes] = useState([]);
 
   useEffect(() => {
@@ -86,6 +88,12 @@ function App() {
 
   const handleConfirm = () => {
     //console.log('here');
+    
+    // timeout for modal to appear
+    const timeoutId = setTimeout(() => {
+      setModalConfirm(true);
+    }, 2000);
+
     // starts in the 4th position of the array
     const edgesToIterate = edges.slice(4);
     edgesToIterate.forEach(edge => {
@@ -107,6 +115,8 @@ function App() {
     else if(counter == 4){
       console.log('yas woke queen, you slayed that')
     }
+
+    return () => clearTimeout(timeoutId);
   };
 
   console.log(edges);
@@ -126,9 +136,6 @@ function App() {
   );
 
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
-
- 
-
   
   // const nodes = [
   //   {
@@ -157,6 +164,9 @@ function App() {
       >
         {modalTimesUp && (
           <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges}/>
+        )}
+        {modalConfirm && (
+          <ConfWokeModal setModalConfirm={setModalConfirm} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges}/>
         )}
       </AnimatePresence>
       <div style={{ height: '100vh' }}>
