@@ -50,7 +50,7 @@ function App() {
   const [edgesConnect, setEdgesConnect] = useState('');
   const [counter, setCounter] = useState(0);
   const [startGame, setStartGame] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(2 * 10);
+  const [timeLeft, setTimeLeft] = useState(2 * 30);
   const [modalTimesUp, setModalTimesUp] = useState(false);
   const [modalConfirm, setModalConfirm] = useState(false);
   const [wrongNodes, setWrongNodes] = useState([]);
@@ -59,7 +59,7 @@ function App() {
     if (edges?.length >= 8){
       setButtonUnselected(false);
     }
-    if(timeLeft<=0){
+    if(timeLeft<=0 & counter == 0){
       setModalTimesUp(true);
     }
 
@@ -166,7 +166,7 @@ function App() {
           <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges}/>
         )}
         {modalConfirm && (
-          <ConfWokeModal setModalConfirm={setModalConfirm} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges}/>
+          <ConfWokeModal setModalConfirm={setModalConfirm} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges} counter={counter}/>
         )}
       </AnimatePresence>
       <div style={{ height: '100vh' }}>
