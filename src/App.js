@@ -156,7 +156,7 @@ function App() {
         onExitComplete={() => null}
       >
         {modalTimesUp && (
-          <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes}/>
+          <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges}/>
         )}
       </AnimatePresence>
       <div style={{ height: '100vh' }}>

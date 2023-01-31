@@ -19,12 +19,16 @@ const dropIn = {
   },
 };
 
-const TimesUpModal = ({setModalTimesUp, setTimeLeft, setCounter, setWrongNodes}) => {
+const TimesUpModal = ({setModalTimesUp, setTimeLeft, setCounter, setWrongNodes, edges, setEdges}) => {
     const handleTryAgain = () => {
         setModalTimesUp(false);
         setTimeLeft(2*60);
         setCounter(0);
         setWrongNodes([]);
+        let start = 0;
+        let end = 3;
+        edges = edges.slice(start, end + 1);
+        setEdges(edges);
     }
 
   return (
