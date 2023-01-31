@@ -51,6 +51,7 @@ function App() {
   const [startGame, setStartGame] = useState(null);
   const [timeLeft, setTimeLeft] = useState(2 * 10);
   const [modalTimesUp, setModalTimesUp] = useState(false);
+  const [wrongNodes, setWrongNodes] = useState([]);
 
   useEffect(() => {
     if (edges?.length >= 8){
@@ -84,20 +85,17 @@ function App() {
   };
 
   const handleConfirm = () => {
-    console.log('here');
-    edges.forEach(edge => {
-      if (edge.source == 1 && edge.target == 8 ){
-        setCounter(counter+1);
-        console.log('here 2');
-      }
-      else if (edge.source == 4 && edge.target == 6 ){
-        setCounter(counter+1);
-      }
-      else if (edge.source == 2 && edge.target == 7 ){
-        setCounter(counter+1);
-      }
-      else if (edge.source == 3 && edge.target == 9 ){
-        setCounter(counter+1);
+    //console.log('here');
+    // starts in the 4th position of the array
+    const edgesToIterate = edges.slice(4);
+    edgesToIterate.forEach(edge => {
+      if (edge.source == 1 && edge.target == 8 ||
+          edge.source == 4 && edge.target == 6 ||
+          edge.source == 2 && edge.target == 7 ||
+          edge.source == 3 && edge.target == 9) {
+        setCounter(prevCounter => prevCounter + 1);
+      } else {
+        setWrongNodes(prevWrongNodes => [...prevWrongNodes, edge]);
       }
     });
     if(0<counter <=2){
@@ -112,6 +110,7 @@ function App() {
   };
 
   console.log(edges);
+  console.log(wrongNodes);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -157,7 +156,7 @@ function App() {
         onExitComplete={() => null}
       >
         {modalTimesUp && (
-          <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter}/>
+          <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes}/>
         )}
       </AnimatePresence>
       <div style={{ height: '100vh' }}>
