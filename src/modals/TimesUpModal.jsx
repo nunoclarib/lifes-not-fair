@@ -38,10 +38,15 @@ const TimesUpModal = ({setModalTimesUp, setTimeLeft, setCounter, setWrongNodes, 
           className='modal'
           variants={dropIn}
         >
-          <p>
-            You lost 😭 Still in the need to stay woke?
-          </p>
-          <button onClick={handleTryAgain}>you better try again!</button>
+<div className="leading-8">
+            <p className="font-bold text-xl mb-3">Losers don't win... 🫢</p>
+            <img src={'img/loser-lost.gif'}/>
+              <p className="mt-3">
+                Nooo... you lost 😭
+                <br/>Still in the need to stay WOKE!??
+              </p>
+              <button onClick={handleTryAgain} className="mt-3 bg-teal-400 pl-3 pr-3 pt-1 pb-1 rounded-lg text-white">Try it once again, it won't hurt!</button>
+            </div>
         </motion.div>
     </Backdrop>
   );

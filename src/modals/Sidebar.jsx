@@ -24,7 +24,7 @@ function Sidebar({ children, selected }) {
             {/* <button className="close-button" onClick={handleClick}>
             Close
           </button> */}
-            <img src={cross} className="close-button" onClick={handleClick} />
+            <img src={cross} className="close-button block" onClick={handleClick} />
             {children}
           </div>
         )}

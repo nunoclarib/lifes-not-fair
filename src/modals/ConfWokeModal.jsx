@@ -27,6 +27,7 @@ const ConfWokeModal = ({
   edges,
   setEdges,
   counter,
+  setButtonUnselected
 }) => {
   const handleTryAgain = () => {
     setModalConfirm(false);
@@ -37,6 +38,7 @@ const ConfWokeModal = ({
     let end = 3;
     edges = edges.slice(start, end + 1);
     setEdges(edges);
+    setButtonUnselected(true);
   };
 
   return (

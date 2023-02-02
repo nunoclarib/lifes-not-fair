@@ -12,8 +12,10 @@ export default function SidebarContent({selectedData}) {
     <div className="ml-2 text-center">
       <div className="text-teal-500 font-bold">{selectedData.name}</div>
       <div className="text-gray-400">{selectedData.job}</div>
+      <div className="text-gray-500">{selectedData?.age}</div>
     </div>
   </div>
+  <div className="text-gray-600 mt-7 text-justify">{selectedData?.info}</div>
     </>
   )
 }

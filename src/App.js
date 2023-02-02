@@ -2,7 +2,7 @@ import './App.css';
 
 import { useState, useCallback, createContext, useMemo, useEffect } from 'react';
 
-import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge, useViewport} from 'reactflow';
+import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge, useReactFlow} from 'reactflow';
 import 'reactflow/dist/style.css';
 
 import PersonNode from './nodes/PersonsNode';
@@ -166,7 +166,7 @@ function App() {
           <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges}/>
         )}
         {modalConfirm && (
-          <ConfWokeModal setModalConfirm={setModalConfirm} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges} counter={counter}/>
+          <ConfWokeModal setModalConfirm={setModalConfirm} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges} counter={counter} setButtonUnselected={setButtonUnselected}/>
         )}
       </AnimatePresence>
       <div style={{ height: '100vh' }}>
