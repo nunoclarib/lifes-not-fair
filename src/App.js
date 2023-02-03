@@ -2,7 +2,7 @@ import './App.css';
 
 import { useState, useCallback, createContext, useMemo, useEffect } from 'react';
 
-import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge, useReactFlow} from 'reactflow';
+import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge, useReactFlow, ReactFlowProvider, useViewport} from 'reactflow';
 import 'reactflow/dist/style.css';
 
 import PersonNode from './nodes/PersonsNode';
@@ -11,7 +11,7 @@ import OutComeNode from './nodes/OutComeNode';
 import CounterNode from './nodes/CounterNode';
 import ConfirmButtton from './buttons/ConfirmButtton';
 
-import { initialNodes, initialEdges, correctEdges } from './data/Data';
+import { initialNodes, initialEdges, correctEdges, secondNodes } from './data/Data';
 
 import { AnimatePresence } from 'framer-motion';
 import InitPage from './init-page/InitPage';
@@ -45,6 +45,7 @@ function App() {
   }), []);
 
   const [nodes, setNodes] = useState(initialNodes);
+  const [newNodes, setNewNodes] = useState(secondNodes);
   const [edges, setEdges] = useState(initialEdges);
   const [buttonUnselected, setButtonUnselected] = useState(true);
   const [edgesConnect, setEdgesConnect] = useState('');
@@ -54,6 +55,7 @@ function App() {
   const [modalTimesUp, setModalTimesUp] = useState(false);
   const [modalConfirm, setModalConfirm] = useState(false);
   const [wrongNodes, setWrongNodes] = useState([]);
+  const [nodePhases, setNodePhases] = useState(1);
 
   useEffect(() => {
     if (edges?.length >= 8){
@@ -63,10 +65,15 @@ function App() {
       setModalTimesUp(true);
     }
 
-  }, [edges, timeLeft]);
+    if(nodePhases == 2){
+      setNodes([...nodes, ...newNodes])
+      setNodePhases(null);
+    } 
+
+  }, [edges, timeLeft, nodePhases]);
 
 
-
+  console.log(nodePhases);
   //const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   //const [selected, setSelected] = useState(false);
@@ -120,6 +127,7 @@ function App() {
   };
 
   console.log(edges);
+  console.log(nodes);
   console.log(wrongNodes);
 
   const onNodesChange = useCallback(
@@ -155,6 +163,26 @@ function App() {
 
   // const edges2 = [{ id: '1-2', source: '1', target: '2', label: 'to the', type: 'step' }];
 
+  function Flow() {
+    let { x, y, zoom } = useViewport();
+    const reactFlowInstance = useReactFlow();
+    console.log(x);
+    console.log(y);
+    console.log(zoom);
+
+    const fitViewNewNodes = {
+      x: 180,
+      y: -180,
+      zoom: 0.65
+    }
+
+    if(nodePhases == null){
+      reactFlowInstance.setViewport(fitViewNewNodes);
+      setNodePhases(4);
+    }
+
+  }
+
   return (
     <div className="App">
       <AnimatePresence
@@ -166,7 +194,9 @@ function App() {
           <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges}/>
         )}
         {modalConfirm && (
-          <ConfWokeModal setModalConfirm={setModalConfirm} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges} counter={counter} setButtonUnselected={setButtonUnselected}/>
+          <ConfWokeModal setModalConfirm={setModalConfirm} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges} counter={counter} setButtonUnselected={setButtonUnselected}
+          setNodePhases={setNodePhases}
+          />
         )}
       </AnimatePresence>
       <div style={{ height: '100vh' }}>
@@ -179,20 +209,23 @@ function App() {
         </Sidebar>
         <AudioPlayer src={audio}/>
         {/* <UserContext.Provider value={{selection: [selected, setSelected]}}> */}
-        <ReactFlow
-          nodes={nodes}
-          onNodesChange={onNodesChange}
-          edges={edges}
-          // edgesConnect={edgesConnect}
-          onEdgesChange={onEdgesChange}
-          onConnect={onConnect}
-          nodeTypes={nodeTypes}
-          proOptions={proOptions}
-          fitView
+        <ReactFlowProvider>
+          <ReactFlow
+            nodes={nodes}
+            onNodesChange={onNodesChange}
+            edges={edges}
+            // edgesConnect={edgesConnect}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            nodeTypes={nodeTypes}
+            proOptions={proOptions}
+            fitView
           >
-          <Background />
-          <Controls />
+            <Background />
+            <Controls />
+            <Flow/>
         </ReactFlow>
+        </ReactFlowProvider>
         {/* </UserContext.Provider> */}
       </div>
     </div>

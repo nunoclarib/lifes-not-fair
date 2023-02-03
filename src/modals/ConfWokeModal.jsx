@@ -27,7 +27,8 @@ const ConfWokeModal = ({
   edges,
   setEdges,
   counter,
-  setButtonUnselected
+  setButtonUnselected,
+  setNodePhases
 }) => {
   const handleTryAgain = () => {
     setModalConfirm(false);
@@ -39,6 +40,18 @@ const ConfWokeModal = ({
     edges = edges.slice(start, end + 1);
     setEdges(edges);
     setButtonUnselected(true);
+  };
+  const handleNextRound = () => {
+    setModalConfirm(false);
+    setTimeLeft(2 * 60);
+    setCounter(0);
+    setWrongNodes([]);
+    //let start = 0;
+    //let end = 3;
+    //edges = edges.slice(start, end + 1);
+    //setEdges(edges);
+    setButtonUnselected(true);
+    setNodePhases(2);
   };
 
   return (
@@ -82,7 +95,7 @@ const ConfWokeModal = ({
                 <br/>You got <span className="text-teal-400 font-bold">{counter} </span>
                 connections right 👏
               </p>
-              <button onClick={handleTryAgain} className="mt-3 bg-teal-400 pl-3 pr-3 pt-1 pb-1 rounded-lg text-white">Next Round?</button>
+              <button onClick={handleNextRound} className="mt-3 bg-teal-400 pl-3 pr-3 pt-1 pb-1 rounded-lg text-white">Next Round?</button>
               <button onClick={handleTryAgain} className="mt-3 bg-teal-400 pl-3 pr-3 pt-1 pb-1 rounded-lg text-white">See the Results</button>
             </div>
           )

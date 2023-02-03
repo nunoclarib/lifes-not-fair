@@ -56,6 +56,40 @@ const initialNodes = [
     type: 'outcomeNode',
   }
 ];
+const secondNodes = [
+  {
+    id: '10',
+    data: { name: 'Lily Bosco', job: 'Transgender woman', emoji: '👩🏼‍🦰', image:"lily.png", age:"25",
+    info: "Lily, a 25-year-old transgender woman, is a multifaceted individual who has faced numerous challenges in her life due to her gender identity. Despite growing up in a small town where she faced discrimination, Lily is a strong and resilient individual who never gave up on her dreams. She works as a graphic designer, using her talents to bring beauty to the world and help others express themselves. Despite financial difficulties, Lily is also an incredibly talented street artist, using her art to spread messages of hope and acceptance for the LGBTQ+ community. Her passion for the arts extends to her love of theater, where she has put on several performances that have received great acclaim. Lily's unique combination of creativity, strength, and resilience make her a true inspiration to those around her."
+    },
+    position: { x:10, y:1200 },
+    type: 'personNode',
+  },
+  {
+    id: '11',
+    data: { name: 'Mei Sawayama', job: 'Asian woman', emoji: '👩🏻', image:"mei.png" },
+    position: { x: 900, y: 1200 },
+    type: 'personNode',
+  },
+  {
+    id: '12',
+    data: { name: 'Marcus Wright', job: 'Black man', emoji: '👨🏾‍🦲', image:"marcus.png" },
+    position: { x: 489, y: 1200 },
+    type: 'personNode',
+  },
+  {
+    id: '14',
+    data: { name: 'David Cole', job: 'White man', emoji: '👱🏻‍♂️', image:"david.png" },
+    position: { x: 1400, y: 1200 },
+    type: 'personNode',
+  },
+  {
+    id: '15',
+    data: { name: 'What if...', job: 'The job recruiter is misogonistic? Who would be less favored?'},
+    position: { x: 600, y: 944 },
+    type: 'scenarioNode',
+  }
+];
 
 const initialEdges = [
   { id: 'edge1', source: '5', target: '1'},
@@ -71,4 +105,4 @@ const correctEdges = [
   { id: 'corret-edge4', source: '4', target: '6'} 
 ]
 
-export { initialNodes, initialEdges, correctEdges };
+export { initialNodes, initialEdges, correctEdges, secondNodes };
