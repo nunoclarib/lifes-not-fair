@@ -9,11 +9,11 @@ const styles = {
     }
 };
 
-export default function CounterButton({counter}) {
+export default function CounterButton({counter, nodePhases, counterNumber}) {
   return (
     <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded border-solid border-2 border-teal-400 bg-white opacity-100" style={styles.position}>
           <div className='text-teal-400'>Wokeness Counter ⏰</div>
-          <div className='text-black'>{counter > 0 ? (<span className='font-bold new-item'>{counter}</span>) : (counter)}/4</div>
+          {(nodePhases == 4 || nodePhases == 7) ? (<div className='text-black'>{counter}/{counterNumber}</div>) : (<div className='text-black'>{counter == 4 || counter == 6 ? (<span className='font-bold new-item'>{counter}</span>) : (counter)}/{counterNumber}</div>)}
     </button>
   )
 }

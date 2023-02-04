@@ -50,6 +50,7 @@ function App() {
   const [buttonUnselected, setButtonUnselected] = useState(true);
   const [edgesConnect, setEdgesConnect] = useState('');
   const [counter, setCounter] = useState(0);
+  const [counterNumber, setCounterNumber] = useState(4);
   const [startGame, setStartGame] = useState(null);
   const [timeLeft, setTimeLeft] = useState(2 * 30);
   const [modalTimesUp, setModalTimesUp] = useState(false);
@@ -58,7 +59,13 @@ function App() {
   const [nodePhases, setNodePhases] = useState(1);
 
   useEffect(() => {
-    if (edges?.length >= 8){
+    if (edges?.length == 8){
+      setButtonUnselected(false);
+    }
+    if(nodePhases == 4){
+      setButtonUnselected(true);
+    }
+    if (nodePhases == 4 && edges?.length > 8){
       setButtonUnselected(false);
     }
     if(timeLeft<=0 & counter == 0){
@@ -68,12 +75,12 @@ function App() {
     if(nodePhases == 2){
       setNodes([...nodes, ...newNodes])
       setNodePhases(null);
-    } 
+    }
 
   }, [edges, timeLeft, nodePhases]);
 
 
-  console.log(nodePhases);
+  console.log('nodePhase:',nodePhases);
   //const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   //const [selected, setSelected] = useState(false);
@@ -94,41 +101,48 @@ function App() {
   };
 
   const handleConfirm = () => {
-    //console.log('here');
-    
-    // timeout for modal to appear
-    const timeoutId = setTimeout(() => {
-      setModalConfirm(true);
-    }, 2000);
+  
+    if(nodePhases == 4){
+      setNodePhases(5);
+      const timeoutId = setTimeout(() => {
+        setModalConfirm(true);
+      }, 2000);
 
-    // starts in the 4th position of the array
-    const edgesToIterate = edges.slice(4);
-    edgesToIterate.forEach(edge => {
-      if (edge.source == 1 && edge.target == 8 ||
-          edge.source == 4 && edge.target == 6 ||
-          edge.source == 2 && edge.target == 7 ||
-          edge.source == 3 && edge.target == 9) {
-        setCounter(prevCounter => prevCounter + 1);
-      } else {
-        setWrongNodes(prevWrongNodes => [...prevWrongNodes, edge]);
-      }
-    });
-    if(0<counter <=2){
-      console.log('modal triste stay more woke!')
+      const edgesToIterate = edges.slice(8);
+      edgesToIterate.forEach(edge => {
+        if (edge.source == 14 && edge.target == 10 ||
+            edge.source == 14 && edge.target == 11) {
+          setCounter(prevCounter => prevCounter + 1);
+        } else {
+          setWrongNodes(prevWrongNodes => [...prevWrongNodes, edge]);
+        }
+      });
+    }else {
+      // timeout for modal to appear
+      const timeoutId = setTimeout(() => {
+        setModalConfirm(true);
+      }, 2000);
+  
+      // starts in the 4th position of the array
+      const edgesToIterate = edges.slice(4);
+      edgesToIterate.forEach(edge => {
+        if (edge.source == 1 && edge.target == 8 ||
+            edge.source == 4 && edge.target == 6 ||
+            edge.source == 2 && edge.target == 7 ||
+            edge.source == 3 && edge.target == 9) {
+          setCounter(prevCounter => prevCounter + 1);
+        } else {
+          setWrongNodes(prevWrongNodes => [...prevWrongNodes, edge]);
+        }
+      });
+  
+      return () => clearTimeout(timeoutId);
     }
-    else if(counter == 3){
-      console.log('you almost got the fullest state of wokeness! you will get there')
-    }
-    else if(counter == 4){
-      console.log('yas woke queen, you slayed that')
-    }
-
-    return () => clearTimeout(timeoutId);
   };
 
-  console.log(edges);
-  console.log(nodes);
-  console.log(wrongNodes);
+  console.log('edges:',edges);
+  console.log('nodes:',nodes);
+  console.log('wrongNodes:',wrongNodes);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -181,6 +195,7 @@ function App() {
       setNodePhases(4);
     }
 
+
   }
 
   return (
@@ -195,7 +210,7 @@ function App() {
         )}
         {modalConfirm && (
           <ConfWokeModal setModalConfirm={setModalConfirm} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges} counter={counter} setButtonUnselected={setButtonUnselected}
-          setNodePhases={setNodePhases}
+          setNodePhases={setNodePhases} setCounterNumber={setCounterNumber} nodePhases={nodePhases}
           />
         )}
       </AnimatePresence>
@@ -203,7 +218,7 @@ function App() {
         <InitPage startGame={startGame} setStartGame={setStartGame}/>
         {startGame === 'hidden' && <Timer timeLeft={timeLeft} setTimeLeft={setTimeLeft}/>}
         <ConfirmButtton buttonUnselected={buttonUnselected} handleConfirm={handleConfirm}/>
-        <CounterButton counter={counter}/>
+        <CounterButton counter={counter} nodePhases={nodePhases} counterNumber={counterNumber}/>
         <Sidebar style={{ height: '100vh' }} selected={selected}>
           <SidebarContent selectedData={selectedData}/>
         </Sidebar>

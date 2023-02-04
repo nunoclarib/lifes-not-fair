@@ -9,19 +9,26 @@ const initialNodes = [
   },
   {
     id: '2',
-    data: { name: 'Marcus Wright', job: 'Black man', emoji: '👨🏾‍🦲', image:"marcus.png" },
+    data: { name: 'Marcus Wright', job: 'Black man', emoji: '👨🏾‍🦲', image:"marcus.png" , age:"30",
+    info: "Marcus, the 30-year-old black marketing manager at a large company, has faced many challenges in his life due to racial discrimination. Despite these obstacles, he has persevered and achieved success in his career. As a passionate advocate for social justice, he works tirelessly to promote equality and opportunity for people of color. In addition to his professional pursuits, Marcus has a deep love for dance, which he practices as a hobby. He is an enthusiastic and dedicated dancer, channeling his energy and creativity into this passion. Through his work and his hobby, Marcus is making a difference in the world and inspiring others to do the same."
+    
+  },
     position: { x: 489, y: 346 },
     type: 'personNode',
   },
   {
     id: '3',
-    data: { name: 'Mei Sawayama', job: 'Asian woman', emoji: '👩🏻', image:"mei.png" },
+    data: { name: 'Mei Sawayama', job: 'Asian woman', emoji: '👩🏻', image:"mei.png" , age:"28",
+    info: 'Mei, the 28-year-old Asian scientist, is a hardworking and determined individual. Growing up in a rural village in China and later immigrating to the United States for college, she values education and has a passion for making a difference in her field. In addition to her career as a scientist at a research institute, Mei is also a proud mother. When she is not dedicating herself to her work and family, she enjoys unwinding with a good book. Her love of reading, combined with her strong work ethic, make her a well-rounded and accomplished individual.'
+  },
     position: { x: 900, y: 346 },
     type: 'personNode',
   },
   {
     id: '4',
-    data: { name: 'David Cole', job: 'White man', emoji: '👱🏻‍♂️', image:"david.png" },
+    data: { name: 'David Cole', job: 'White man', emoji: '👱🏻‍♂️', image:"david.png" , age:"35",
+    info: 'David, the 35-year-old white lawyer, has had a privileged upbringing with access to many resources and opportunities. Despite his advantages, he values hard work and is driven to succeed in his career. In addition to his work as a lawyer, David has a nerdy side - he is passionate about technology and always up-to-date with the latest advancements. When he is not working, he enjoys indulging his green thumb and tends to his garden, which provides him with a sense of peace and grounding. With his drive, intelligence, and unique interests, David is a well-rounded individual who is making the most of his opportunities and leaving a mark on the world.'
+    },
     position: { x: 1400, y: 346 },
     type: 'personNode',
   },
@@ -67,24 +74,30 @@ const secondNodes = [
   },
   {
     id: '11',
-    data: { name: 'Mei Sawayama', job: 'Asian woman', emoji: '👩🏻', image:"mei.png" },
+    data: { name: 'Mei Sawayama', job: 'Asian woman', emoji: '👩🏻', image:"mei.png" , age:"28",
+    info: 'Mei, the 28-year-old Asian scientist, is a hardworking and determined individual. Growing up in a rural village in China and later immigrating to the United States for college, she values education and has a passion for making a difference in her field. In addition to her career as a scientist at a research institute, Mei is also a proud mother. When she is not dedicating herself to her work and family, she enjoys unwinding with a good book. Her love of reading, combined with her strong work ethic, make her a well-rounded and accomplished individual.'
+  },
     position: { x: 900, y: 1200 },
     type: 'personNode',
   },
   {
     id: '12',
-    data: { name: 'Marcus Wright', job: 'Black man', emoji: '👨🏾‍🦲', image:"marcus.png" },
+    data: { name: 'Marcus Wright', job: 'Black man', emoji: '👨🏾‍🦲', image:"marcus.png" , age:"30",
+    info: "Marcus, the 30-year-old black marketing manager at a large company, has faced many challenges in his life due to racial discrimination. Despite these obstacles, he has persevered and achieved success in his career. As a passionate advocate for social justice, he works tirelessly to promote equality and opportunity for people of color. In addition to his professional pursuits, Marcus has a deep love for dance, which he practices as a hobby. He is an enthusiastic and dedicated dancer, channeling his energy and creativity into this passion. Through his work and his hobby, Marcus is making a difference in the world and inspiring others to do the same."
+  },
     position: { x: 489, y: 1200 },
     type: 'personNode',
   },
   {
-    id: '14',
-    data: { name: 'David Cole', job: 'White man', emoji: '👱🏻‍♂️', image:"david.png" },
+    id: '13',
+    data: { name: 'Matthew Barmon', job: 'Gay man', emoji: '👨🏼‍🦰', image:"matthew.png" , age:"22",
+    info:"Matthew Barmon is a 22-year-old gay man with a fiery spirit, reflected in his bright red hair. He is a talented and prestigious actor in the field, known for his dynamic and captivating performances. In addition to his acting career, Matthew is also a talented photographer with a keen eye for capturing the beauty in the world around him. He is passionate about both his art forms and is always seeking out new challenges and opportunities to grow and create. With his youthful energy, creative spirit, and versatile talents, Matthew is a rising star who is poised to make a lasting impact in the entertainment industry and beyond."
+    },
     position: { x: 1400, y: 1200 },
     type: 'personNode',
   },
   {
-    id: '15',
+    id: '14',
     data: { name: 'What if...', job: 'The job recruiter is misogonistic? Who would be less favored?'},
     position: { x: 600, y: 944 },
     type: 'scenarioNode',
