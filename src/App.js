@@ -11,7 +11,7 @@ import OutComeNode from './nodes/OutComeNode';
 import CounterNode from './nodes/CounterNode';
 import ConfirmButtton from './buttons/ConfirmButtton';
 
-import { initialNodes, initialEdges, correctEdges, secondNodes } from './data/Data';
+import { initialNodes, initialEdges, correctEdges, secondNodes, thirdNodes } from './data/Data';
 
 import { AnimatePresence } from 'framer-motion';
 import InitPage from './init-page/InitPage';
@@ -46,6 +46,7 @@ function App() {
 
   const [nodes, setNodes] = useState(initialNodes);
   const [newNodes, setNewNodes] = useState(secondNodes);
+  const [newNodes2, setNewNodes2] = useState(thirdNodes);
   const [edges, setEdges] = useState(initialEdges);
   const [buttonUnselected, setButtonUnselected] = useState(true);
   const [edgesConnect, setEdgesConnect] = useState('');
@@ -68,7 +69,7 @@ function App() {
     if (nodePhases == 4 && edges?.length > 8){
       setButtonUnselected(false);
     }
-    if (nodePhases == 4 && edges?.length > 8){
+    if (nodePhases == 8 && edges?.length > 9){
       setButtonUnselected(false);
     }
     if(timeLeft<=0 & counter == 0){
@@ -79,15 +80,25 @@ function App() {
       setModalTimesUp(true);
     }
 
+    if(timeLeft<=0 & counter > 5 &&  edges?.length >= 9){
+      setModalTimesUp(true);
+    }
+
     if(nodePhases == 2){
-      setNodes([...nodes, ...newNodes])
+      setNodes([...nodes, ...newNodes]);
       setNodePhases(null);
     }
 
-    // if(nodePhases == 5){
-    //   setNodes([...nodes, ...newNodes2])
-    //   setNodePhases(6);
-    // }
+    if(nodePhases == 6){
+      setNodes([...nodes, ...newNodes2]);
+      setNodePhases(7);
+    }
+
+    if(nodePhases == 10){
+      setNodes([]);
+      setNodes(initialNodes)
+      setNodePhases(1);
+    }
 
   }, [edges, timeLeft, nodePhases]);
 
@@ -98,7 +109,7 @@ function App() {
   //const [selected, setSelected] = useState(false);
 
   // const [isSelected, setIsSelected] = useState(false);
-  // console.log(isSelected);
+   console.log(nodePhases);
 
   const selected = useSelector((state) => state.selected);
   const selectedData = useSelector((state) => state.data);
@@ -129,7 +140,22 @@ function App() {
           setWrongNodes(prevWrongNodes => [...prevWrongNodes, edge]);
         }
       });
-    }else {
+    }else if (nodePhases == 8){
+      //setNodePhases(5);
+      const timeoutId = setTimeout(() => {
+        setModalConfirm(true);
+      }, 2000);
+
+      const edgesToIterate = edges.slice(9);
+      edgesToIterate.forEach(edge => {
+        if (edge.source == 15 && edge.target == 16) {
+          setCounter(prevCounter => prevCounter + 1);
+        } else {
+          setWrongNodes(prevWrongNodes => [...prevWrongNodes, edge]);
+        }
+      });
+    }
+    else {
       // timeout for modal to appear
       const timeoutId = setTimeout(() => {
         setModalConfirm(true);
@@ -152,7 +178,7 @@ function App() {
     }
   };
 
-  //console.log('edges:',edges);
+  console.log('edges:',edges);
   //console.log('nodes:',nodes);
   //console.log('wrongNodes:',wrongNodes);
 
@@ -202,9 +228,31 @@ function App() {
       zoom: 0.65
     }
 
+    const fitViewNewNodes2 = {
+      x: 130,
+      y: -500,
+      zoom: 0.65
+    }
+
+    const fitViewNewNodes3 = {
+      x: 0,
+      y: 0,
+      zoom: 0.7
+    }
+
     if(nodePhases == null){
       reactFlowInstance.setViewport(fitViewNewNodes);
       setNodePhases(4);
+    }
+
+    if(nodePhases == 7){
+      reactFlowInstance.setViewport(fitViewNewNodes2);
+      setNodePhases(8);
+    }
+
+    if(nodePhases == 9){
+      reactFlowInstance.setViewport(fitViewNewNodes3);
+      setNodePhases(10);
     }
 
   }
@@ -221,7 +269,7 @@ function App() {
         )}
         {modalConfirm && (
           <ConfWokeModal setModalConfirm={setModalConfirm} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges} counter={counter} setButtonUnselected={setButtonUnselected}
-          setNodePhases={setNodePhases} setCounterNumber={setCounterNumber} nodePhases={nodePhases} wrongNodes={wrongNodes}
+          setNodePhases={setNodePhases} setCounterNumber={setCounterNumber} counterNumber={counterNumber} nodePhases={nodePhases} wrongNodes={wrongNodes}
           />
         )}
       </AnimatePresence>

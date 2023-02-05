@@ -52,6 +52,16 @@ const TimesUpModal = ({
       edges = edges.slice(start, end + 1);
       setEdges(edges);
     }
+    if(nodePhases == 8){
+      setModalTimesUp(false);
+      setTimeLeft(2 * 30);
+      //setCounter(6);
+      setWrongNodes([]);
+      let start = 0;
+      let end = 9;
+      edges = edges.slice(start, end + 1);
+      setEdges(edges);
+    }
     
   };
 
@@ -78,6 +88,24 @@ const TimesUpModal = ({
           </button>
         </div>) }
         {(nodePhases == 4) && (
+          <div className="leading-8">
+          <p className="font-bold text-xl mb-3">Oops you didn't get this one on time... 🫢</p>
+          <img src={"img/loser2.gif"} />
+          <p className="mt-3">
+            You lost this round 😭
+            <br />
+            BUT you can still try again and be the WOKEST on earth! 🌍
+          </p>
+          <button
+            onClick={handleTryAgain}
+            className="mt-3 bg-teal-400 pl-3 pr-3 pt-1 pb-1 rounded-lg text-white"
+          >
+            Try again, go!
+          </button>
+        </div>
+        )
+        }
+        {(nodePhases == 8) && (
           <div className="leading-8">
           <p className="font-bold text-xl mb-3">Oops you didn't get this one on time... 🫢</p>
           <img src={"img/loser2.gif"} />
