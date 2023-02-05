@@ -5,8 +5,8 @@ function OutcomeNode({ data }) {
 
 const styles = {
     connector: {
-        height: "10px",
-        width: "10px",
+        height: "14px",
+        width: "14px",
     }
 };
 

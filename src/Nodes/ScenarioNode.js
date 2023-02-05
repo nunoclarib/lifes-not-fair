@@ -4,8 +4,8 @@ import { Handle, Position } from 'reactflow';
 function ScenarioNode({ data }) {
   const styles = {
     connector: {
-        height: "10px",
-        width: "10px",
+        height: "14px",
+        width: "14px",
     }
 };
   return (

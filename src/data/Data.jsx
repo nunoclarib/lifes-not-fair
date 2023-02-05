@@ -103,6 +103,36 @@ const secondNodes = [
     type: 'scenarioNode',
   }
 ];
+const thirdNodes = [
+  {
+    id: '15',
+    data: { name: 'What if...', job: 'Theatre job for a act for a trans woman'},
+    position: { x: 600, y: 944 },
+    type: 'scenarioNode',
+  },
+  {
+    id: '16',
+    data: { name: 'Outcome B', job: 'May deal with additional challenges due to discrimination and biases related to their race. However, their passion for social justice and their dedication to promoting equality and opportunity for people of color may also give them an advantage.'},
+    position: { x: 900, y: 2000 },
+    type: 'outcomeNode',
+  },
+  {
+    id: '17',
+    data: { name: 'Lily Bosco', job: 'Transgender woman', emoji: '👩🏼‍🦰', image:"lily.png", age:"25",
+    info: "Lily, a 25-year-old transgender woman, is a multifaceted individual who has faced numerous challenges in her life due to her gender identity. Despite growing up in a small town where she faced discrimination, Lily is a strong and resilient individual who never gave up on her dreams. She works as a graphic designer, using her talents to bring beauty to the world and help others express themselves. Despite financial difficulties, Lily is also an incredibly talented street artist, using her art to spread messages of hope and acceptance for the LGBTQ+ community. Her passion for the arts extends to her love of theater, where she has put on several performances that have received great acclaim. Lily's unique combination of creativity, strength, and resilience make her a true inspiration to those around her."
+    },
+    position: { x: 489, y: 1300 },
+    type: 'personNode',
+  },
+  {
+    id: '18',
+    data: { name: 'Matthew Barmon', job: 'Gay man', emoji: '👨🏼‍🦰', image:"matthew.png" , age:"22",
+    info:"Matthew Barmon is a 22-year-old gay man with a fiery spirit, reflected in his bright red hair. He is a talented and prestigious actor in the field, known for his dynamic and captivating performances. In addition to his acting career, Matthew is also a talented photographer with a keen eye for capturing the beauty in the world around him. He is passionate about both his art forms and is always seeking out new challenges and opportunities to grow and create. With his youthful energy, creative spirit, and versatile talents, Matthew is a rising star who is poised to make a lasting impact in the entertainment industry and beyond."
+    },
+    position: { x: 1400, y: 1300 },
+    type: 'personNode',
+  },
+];
 
 const initialEdges = [
   { id: 'edge1', source: '5', target: '1'},

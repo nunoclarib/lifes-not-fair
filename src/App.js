@@ -52,7 +52,7 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [counterNumber, setCounterNumber] = useState(4);
   const [startGame, setStartGame] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(2 * 30);
+  const [timeLeft, setTimeLeft] = useState(2 * 60);
   const [modalTimesUp, setModalTimesUp] = useState(false);
   const [modalConfirm, setModalConfirm] = useState(false);
   const [wrongNodes, setWrongNodes] = useState([]);
@@ -68,7 +68,14 @@ function App() {
     if (nodePhases == 4 && edges?.length > 8){
       setButtonUnselected(false);
     }
+    if (nodePhases == 4 && edges?.length > 8){
+      setButtonUnselected(false);
+    }
     if(timeLeft<=0 & counter == 0){
+      setModalTimesUp(true);
+    }
+
+    if(timeLeft<=0 & counter == 4){
       setModalTimesUp(true);
     }
 
@@ -77,10 +84,15 @@ function App() {
       setNodePhases(null);
     }
 
+    // if(nodePhases == 5){
+    //   setNodes([...nodes, ...newNodes2])
+    //   setNodePhases(6);
+    // }
+
   }, [edges, timeLeft, nodePhases]);
 
 
-  console.log('nodePhase:',nodePhases);
+  //console.log('nodePhase:',nodePhases);
   //const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   //const [selected, setSelected] = useState(false);
@@ -90,7 +102,7 @@ function App() {
 
   const selected = useSelector((state) => state.selected);
   const selectedData = useSelector((state) => state.data);
-  console.log('SELECTED:',selected)
+  //console.log('SELECTED:',selected)
 
   const handleClick = () => {
     if(selected === true){
@@ -140,9 +152,9 @@ function App() {
     }
   };
 
-  console.log('edges:',edges);
-  console.log('nodes:',nodes);
-  console.log('wrongNodes:',wrongNodes);
+  //console.log('edges:',edges);
+  //console.log('nodes:',nodes);
+  //console.log('wrongNodes:',wrongNodes);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -180,9 +192,9 @@ function App() {
   function Flow() {
     let { x, y, zoom } = useViewport();
     const reactFlowInstance = useReactFlow();
-    console.log(x);
-    console.log(y);
-    console.log(zoom);
+    //console.log(x);
+    //console.log(y);
+    //console.log(zoom);
 
     const fitViewNewNodes = {
       x: 180,
@@ -195,7 +207,6 @@ function App() {
       setNodePhases(4);
     }
 
-
   }
 
   return (
@@ -206,11 +217,11 @@ function App() {
         onExitComplete={() => null}
       >
         {modalTimesUp && (
-          <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges}/>
+          <TimesUpModal setModalTimesUp={setModalTimesUp} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges} nodePhases={nodePhases}/>
         )}
         {modalConfirm && (
           <ConfWokeModal setModalConfirm={setModalConfirm} setTimeLeft={setTimeLeft} setCounter={setCounter} setWrongNodes={setWrongNodes} edges ={edges} setEdges={setEdges} counter={counter} setButtonUnselected={setButtonUnselected}
-          setNodePhases={setNodePhases} setCounterNumber={setCounterNumber} nodePhases={nodePhases}
+          setNodePhases={setNodePhases} setCounterNumber={setCounterNumber} nodePhases={nodePhases} wrongNodes={wrongNodes}
           />
         )}
       </AnimatePresence>

@@ -7,8 +7,8 @@ function Sidebar({ children, selected }) {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    console.log("hey");
-    console.log(selected);
+    //console.log("hey");
+    //console.log(selected);
     if (selected === true) {
       dispatch(unselect(true));
     } else {

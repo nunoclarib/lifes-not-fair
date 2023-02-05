@@ -16,14 +16,14 @@ export default function ConfirmButtton({ buttonUnselected, handleConfirm }) {
     <>
       {buttonUnselected ? (
         <button
-          className="bg-blue-500 text-white font-bold py-2 px-4 rounded h-14 bg-teal-400 cursor-not-allowed opacity-50"
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded-xl h-14 bg-teal-400 cursor-not-allowed opacity-50"
           style={styles.position}
         >
           Confirm Your Wokeness 😌
         </button>
       ) : (
         <button
-          className="bg-blue-500 text-white font-bold py-2 px-4 rounded h-14 bg-teal-400"
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded-xl h-14 bg-teal-400"
           style={styles.position}
           onClick={handleConfirm}
         >

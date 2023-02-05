@@ -8,8 +8,8 @@ import { select, unselect} from '../redux/actions/index'
 function PersonsNode({ data }) {
   const styles = {
     connector: {
-        height: "10px",
-        width: "10px",
+        height: "14px",
+        width: "14px",
     }
 };
 
@@ -23,7 +23,7 @@ function PersonsNode({ data }) {
 const dispatch = useDispatch();
 const selected = useSelector((state) => state.selected);
 const selectedData = useSelector((state) => state.data);
-console.log(selectedData?.name);
+//console.log(selectedData?.name);
 const [isSelected, setIsSelected] = useState(false);
 
 const handleClick = () => {
@@ -87,7 +87,7 @@ const handleClick = () => {
   </div>
 
   <Handle type="target" position={Position.Top} className="w-16 !bg-teal-500" style={styles.connector}/>
-  <Handle type="source" position={Position.Bottom} className="w- !bg-teal-500" style={styles.connector}/>
+  <Handle type="source" position={Position.Bottom} className="w-16 !bg-teal-500" style={styles.connector}/>
 </div>
 )}
 </>
