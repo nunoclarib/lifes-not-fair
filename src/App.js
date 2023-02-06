@@ -80,7 +80,7 @@ function App() {
       setModalTimesUp(true);
     }
 
-    if(timeLeft<=0 & counter > 5 &&  edges?.length >= 9){
+    if(timeLeft<=0 & counter >= 5 &&  edges?.length >= 9){
       setModalTimesUp(true);
     }
 
@@ -126,12 +126,14 @@ function App() {
   const handleConfirm = () => {
   
     if(nodePhases == 4){
+      setButtonUnselected(true);
       setNodePhases(5);
       const timeoutId = setTimeout(() => {
         setModalConfirm(true);
-      }, 2000);
+      }, 1000);
 
       const edgesToIterate = edges.slice(8);
+      console.log(edgesToIterate);
       edgesToIterate.forEach(edge => {
         if (edge.source == 14 && edge.target == 10 ||
             edge.source == 14 && edge.target == 11) {
@@ -141,10 +143,11 @@ function App() {
         }
       });
     }else if (nodePhases == 8){
+      setButtonUnselected(true);
       //setNodePhases(5);
       const timeoutId = setTimeout(() => {
         setModalConfirm(true);
-      }, 2000);
+      }, 1000);
 
       const edgesToIterate = edges.slice(9);
       edgesToIterate.forEach(edge => {
@@ -156,10 +159,11 @@ function App() {
       });
     }
     else {
+      setButtonUnselected(true);
       // timeout for modal to appear
       const timeoutId = setTimeout(() => {
         setModalConfirm(true);
-      }, 2000);
+      }, 1000);
   
       // starts in the 4th position of the array
       const edgesToIterate = edges.slice(4);

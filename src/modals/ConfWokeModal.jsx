@@ -57,16 +57,18 @@ const ConfWokeModal = ({
     } 
     else if (nodePhases == 8){
       setModalConfirm(false);
-      setTimeLeft(5 * 60);
-      setCounter(0);
+      setTimeLeft(2 * 30);
       setWrongNodes([]);
+      if(edges[edges.length - 1].target == 16 || edges[edges.length - 2].target == 16){
+        setCounter(counter-1);
+      }
       let start = 0;
-      let end = 3;
+      let end = 8;
       edges = edges.slice(start, end + 1);
       setEdges(edges);
       setButtonUnselected(true);
-      setNodePhases(9);
-      setCounterNumber(4);
+      //setNodePhases(4);
+      setCounterNumber(6);
     }
     else {
       setModalConfirm(false);
@@ -106,6 +108,19 @@ const ConfWokeModal = ({
       setNodePhases(6);
       setCounterNumber(7);
     } 
+    else if (nodePhases == 8){
+      setModalConfirm(false);
+      setTimeLeft(5 * 60);
+      setCounter(0);
+      setWrongNodes([]);
+      let start = 0;
+      let end = 3;
+      edges = edges.slice(start, end + 1);
+      setEdges(edges);
+      setButtonUnselected(true);
+      setNodePhases(9);
+      setCounterNumber(4);
+    }
     else {
       setModalConfirm(false);
       setTimeLeft(2 * 30);
@@ -303,7 +318,7 @@ const ConfWokeModal = ({
           edges[edges.length - 1].target == 11 && (
             <div>
               <p className="font-bold text-xl mb-3">
-                Let's analize your choices now 😌
+                Let's analyze your choices now 😌
               </p>
               <p className="mt-3 text-justify">
                 You chose <span className="text-teal-400 font-bold">Mei</span>{" "}
@@ -377,56 +392,62 @@ const ConfWokeModal = ({
                 You got it all, in this one 🥳
               </p>
               <p className="mt-3">
-                You got
+                Score: 
                 <span className="text-teal-400 font-bold"> {counter} </span>
-                out of <span className="font-bold">{counterNumber}</span> connections right until this very moment.  
+                / <span className="font-bold">{counterNumber}</span>  
               </p>
               <p className="mt-3">
-                This is where we part ways and we hope you learned a lot with this little game. 😊
+                PRETTY WOKE you, why did you even play this game? ✨  
+              </p>
+              <p className="mt-3">
+                This is where we part ways and we hope you learned something with this little game. 😊
               </p>
               <button
                 //work on this
-                onClick={handleTryAgain}
+                onClick={handleNextRound}
                 className="mt-5 border-teal-400 border-2 text-black pl-3 pr-3 pt-1 pb-1 rounded-lg text-white mr-2"
               >
                 Play It Again! 🎮
               </button>
-              {/* <button
-                onClick={handleNextRound}
+              <button
+                onClick={handleTryAgain}
                 className="mt-5 bg-teal-400 pl-3 pr-3 pt-1 pb-1 rounded-lg text-white border-teal-400 border-2 ml-2"
               >
-                Bye bye 👋 
-              </button> */}
+                Analyze again this round
+              </button>
             </div>
           )}
         { nodePhases == 8 &&
           edges[edges.length - 1].target != 16 && (
             <div>
               <p className="font-bold text-xl mb-3">
-                No mam this is not right! 😫
+                Let's try to learn this! 😄
               </p>
-              <p className="mt-3">
-                // write here that discourse why Lily should be the one selected 
+              <p className="mt-3 text-justify">
+                By default, this choice is not the most appropriate. <span className="text-teal-400 font-bold"> Lily </span>, as well as her comunity of trans individuals, specially women, won't like that the trans character portrayed in the scenes is not making justice to their lifes, not even to their own bodies. Trans women are not men in wigs, so shouldn't be a character that represents trans lifes.
                 <br/>
-                <span className="text-teal-400 font-bold"> {counter} </span>
-                out of <span className="font-bold">{counterNumber}</span> connections right until this very moment.  
+                Furthermore, the opportunity to work is taken away from a mostly marginalized and minority class in society and given to one who already has it from the start. In this case we would be making an incorrect choice even if we justifed the fact that <span className="text-teal-400 font-bold"> Matthew </span> had more experience than <span className="text-teal-400 font-bold"> Lily </span>. 
               </p>
-              <p className="mt-3">
-                This is where we part ways and we hope you learned a lot with this little game. 😊
-              </p>
+              
               <button
                 //work on this
-                onClick={handleTryAgain}
+                onClick={handleNextRound}
                 className="mt-5 border-teal-400 border-2 text-black pl-3 pr-3 pt-1 pb-1 rounded-lg text-white mr-2"
               >
                 Play It Again! 🎮
               </button>
-              {/* <button
-                onClick={handleNextRound}
+              <button
+                onClick={handleTryAgain}
                 className="mt-5 bg-teal-400 pl-3 pr-3 pt-1 pb-1 rounded-lg text-white border-teal-400 border-2 ml-2"
               >
-                Bye bye 👋 
-              </button> */}
+                Analyze once more this round
+              </button>
+              <p className="mt-4">
+                Score: 
+                <span className="text-teal-400 font-bold"> {counter} </span>
+                / <span className="font-bold">{counterNumber}</span>  
+              </p>
+              <p className="mt-3">Even if you aren't the wokest, you did learn more today!  </p>
             </div>
           )}
       </motion.div>

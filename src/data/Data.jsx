@@ -106,23 +106,21 @@ const secondNodes = [
 const thirdNodes = [
   {
     id: '15',
-    data: { name: 'What if...', job: 'Theatre job for a act for a trans woman'},
-    position: { x: 700, y: 1350 },
+    data: { name: 'What if...', job: "There's a casting call for a trans woman character in a famous play on broadway. Which persona should get it?"},
+    position: { x: 300, y: 1350 },
     type: 'scenarioNode',
   },
   {
     id: '16',
     data: { name: 'Lily Bosco', job: 'Transgender woman', emoji: '👩🏼‍🦰', image:"lily.png", age:"25",
-    info: "Lily, a 25-year-old transgender woman, is a multifaceted individual who has faced numerous challenges in her life due to her gender identity. Despite growing up in a small town where she faced discrimination, Lily is a strong and resilient individual who never gave up on her dreams. She works as a graphic designer, using her talents to bring beauty to the world and help others express themselves. Despite financial difficulties, Lily is also an incredibly talented street artist, using her art to spread messages of hope and acceptance for the LGBTQ+ community. Her passion for the arts extends to her love of theater, where she has put on several performances that have received great acclaim. Lily's unique combination of creativity, strength, and resilience make her a true inspiration to those around her."
-    },
+    info: "Lily, a 25-year-old transgender woman, is a multifaceted individual who has faced numerous challenges in her life due to her gender identity. Despite growing up in a small town where she faced discrimination, Lily is a strong and resilient individual who never gave up on her dreams. She works as a graphic designer, using her talents to bring beauty to the world and help others express themselves. Despite financial difficulties, Lily is also an incredibly talented street artist, using her art to spread messages of hope and acceptance for the LGBTQ+ community. Her passion for the arts extends to her love of theater, where she has put on several performances that have received great acclaim. Lily's unique combination of creativity, strength, and resilience make her a true inspiration to those around her."},
     position: { x: 600, y: 1600 },
     type: 'personNode',
   },
   {
     id: '17',
     data: { name: 'Matthew Barmon', job: 'Gay man', emoji: '👨🏼‍🦰', image:"matthew.png" , age:"22",
-    info:"Matthew Barmon is a 22-year-old gay man with a fiery spirit, reflected in his bright red hair. He is a talented and prestigious actor in the field, known for his dynamic and captivating performances. In addition to his acting career, Matthew is also a talented photographer with a keen eye for capturing the beauty in the world around him. He is passionate about both his art forms and is always seeking out new challenges and opportunities to grow and create. With his youthful energy, creative spirit, and versatile talents, Matthew is a rising star who is poised to make a lasting impact in the entertainment industry and beyond."
-    },
+    info:"Matthew Barmon is a 22-year-old gay man with a fiery spirit, reflected in his bright red hair. He is a talented and prestigious actor in the field, known for his dynamic and captivating performances. In addition to his acting career, Matthew is also a talented photographer with a keen eye for capturing the beauty in the world around him. He is passionate about both his art forms and is always seeking out new challenges and opportunities to grow and create. With his youthful energy, creative spirit, and versatile talents, Matthew is a rising star who is poised to make a lasting impact in the entertainment and acting industry and beyond."},
     position: { x: 950, y: 1600 },
     type: 'personNode',
   },
@@ -139,7 +137,7 @@ const correctEdges = [
   { id: 'corret-edge1', source: '3', target: '9'},
   { id: 'corret-edge2', source: '1', target: '8'},
   { id: 'corret-edge3', source: '2', target: '7'}, 
-  { id: 'corret-edge4', source: '4', target: '6'} 
+  { id: 'corret-edge4', source: '4', target: '6'}
 ]
 
 export { initialNodes, initialEdges, correctEdges, secondNodes, thirdNodes };
