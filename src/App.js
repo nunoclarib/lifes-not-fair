@@ -58,6 +58,7 @@ function App() {
   const [modalConfirm, setModalConfirm] = useState(false);
   const [wrongNodes, setWrongNodes] = useState([]);
   const [nodePhases, setNodePhases] = useState(1);
+  
 
   useEffect(() => {
     if (edges?.length == 8){
