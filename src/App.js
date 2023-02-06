@@ -53,7 +53,7 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [counterNumber, setCounterNumber] = useState(4);
   const [startGame, setStartGame] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(2 * 60);
+  const [timeLeft, setTimeLeft] = useState(5 * 60);
   const [modalTimesUp, setModalTimesUp] = useState(false);
   const [modalConfirm, setModalConfirm] = useState(false);
   const [wrongNodes, setWrongNodes] = useState([]);
