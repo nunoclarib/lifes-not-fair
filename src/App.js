@@ -5,10 +5,10 @@ import { useState, useCallback, createContext, useMemo, useEffect } from 'react'
 import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge, useReactFlow, ReactFlowProvider, useViewport} from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import PersonNode from './nodes/PersonsNode';
-import ScenarioNode from './nodes/ScenarioNode';
-import OutComeNode from './nodes/OutComeNode';
-import CounterNode from './nodes/CounterNode';
+import PersonNode from './blocks/PersonsNode';
+import ScenarioNode from './blocks/ScenarioNode';
+import OutComeNode from './blocks/OutComeNode';
+import CounterNode from './blocks/CounterNode';
 import ConfirmButtton from './buttons/ConfirmButtton';
 
 import { initialNodes, initialEdges, correctEdges, secondNodes, thirdNodes } from './data/Data';
