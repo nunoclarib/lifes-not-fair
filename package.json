@@ -45,8 +45,5 @@
   "devDependencies": {
     "git-cz": "^4.9.0",
     "tailwindcss": "^3.2.4"
-  },
-  "engines": {
-    "node": ">=16.x"
   }
 }
