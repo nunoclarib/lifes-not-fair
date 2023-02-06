@@ -5,7 +5,7 @@ import { useState, useCallback, createContext, useMemo, useEffect } from 'react'
 import ReactFlow, { Controls, Background, applyEdgeChanges, applyNodeChanges, addEdge, useReactFlow, ReactFlowProvider, useViewport} from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import PersonNode from '../src/nodes/PersonsNode';
+import PersonNode from './nodes/PersonsNode';
 import ScenarioNode from './nodes/ScenarioNode';
 import OutComeNode from './nodes/OutComeNode';
 import CounterNode from './nodes/CounterNode';
